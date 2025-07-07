@@ -24,7 +24,19 @@ public class Main {
                 scanner.next();
                 System.out.printf("Введите скорость %d автомобиля:\n", i);
             }
+
             speed = scanner.nextInt();
+
+            while (speed < 0 || speed > 250) {
+                System.out.println("Ошибка ввода. Скорость должна быть от 0 до 250 км/ч.");
+                System.out.printf("Введите скорость %d автомобиля:\n", i);
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Ошибка ввода");
+                    scanner.next();
+                    System.out.printf("Введите скорость %d автомобиля:\n", i);
+                }
+                speed = scanner.nextInt();
+            }
 
             cars.add(new Car(modelCar, speed));
         }
